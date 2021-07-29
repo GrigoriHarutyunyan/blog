@@ -25,7 +25,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Категория {{$category->title}}</h3>
+                            <h3 class="card-title">Category {{$category->title}}</h3>
                         </div>
                         <!-- /.card-header -->
 
@@ -34,7 +34,7 @@
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="title">Название</label>
+                                    <label for="title">Name</label>
                                     <input type="text" name="title"
                                            class="form-control @error('title') is-invalid @enderror" id="title"
                                            value="{{$category->title}}">
@@ -43,7 +43,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
 

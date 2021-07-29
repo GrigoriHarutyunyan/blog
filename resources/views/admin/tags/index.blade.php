@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Категории</h1>
+                        <h1>Tags</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,19 +25,19 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Список тегов</h3>
+                                <h3 class="card-title">Tags list</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <a href="{{ route('tags.create') }}" class="btn btn-primary mb-3">Добавить
-                                    тег</a>
+                                <a href="{{ route('tags.create') }}" class="btn btn-primary mb-3">Add
+                                    tag</a>
                                 @if (count($tags))
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover text-nowrap">
                                             <thead>
                                             <tr>
                                                 <th style="width: 30px">#</th>
-                                                <th>Наименование</th>
+                                                <th>Name</th>
                                                 <th>Slug</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -57,7 +57,7 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm"
-                                                                    onclick="return confirm('Подтвердите удаление')">
+                                                                    onclick="return confirm('Confirm deletion')">
                                                                 <i
                                                                     class="fas fa-trash-alt"></i>
                                                             </button>
@@ -69,7 +69,7 @@
                                         </table>
                                     </div>
                                 @else
-                                    <p>Тегов пока нет...</p>
+                                    <p>Tags doesn`t exist...</p>
                                 @endif
                             </div>
                             <!-- /.card-body -->
