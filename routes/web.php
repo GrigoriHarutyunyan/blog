@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home');
+Route::get('/article', [\App\Http\Controllers\PostController::class,'show'])->name('posts.single');
 
 //Admin
 Route::group(['prefix'=>'admin', 'middleware' =>'admin'], function(){
@@ -42,9 +42,9 @@ Route::group(['middleware'=>'guest'],function (){
     Route::post('/login', [UserController::class, 'login'])->name('login');
 });
 
-
-
+//Logout
 Route::get('/logout', [UserController::class,'logout'])->name('logout')->middleware('auth');
+
 
 
 

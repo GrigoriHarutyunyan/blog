@@ -53,6 +53,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-4 offset-8">
@@ -60,6 +61,7 @@
                     </div>
                     <!-- /.col -->
                 </div>
+                <a href="{{ route('register.create') }}" class="">Register</a>
             </form>
         </div>
         <!-- /.form-box -->
