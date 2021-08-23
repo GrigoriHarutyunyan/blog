@@ -36,9 +36,9 @@
                         </li>
                         @if($categories->count())
                             @foreach($categories as $category)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('categories.single', ['slug'=>$category->slug])}}">{{$category->title}}</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('categories.single', ['slug'=>$category->slug])}}">{{$category->title}}</a>
+                                </li>
                             @endforeach
                         @endif
                     </ul>
@@ -51,18 +51,16 @@
         </div><!-- end container-fluid -->
     </header><!-- end market-header -->
 
-    @yield('header')
+    @yield('page-title')
 
-    <section class="section lb @if (!Request::is('/')) m3rem @endif
-        ">
+    <section class="section lb">
         <div class="container">
             <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                    @include('layouts.sidebar')
+                </div><!-- end col -->
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                     @yield('content')
-                </div><!-- end col -->
-
-                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-@include('layouts.sidebar')
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -193,3 +191,4 @@
 
 </body>
 </html>
+
