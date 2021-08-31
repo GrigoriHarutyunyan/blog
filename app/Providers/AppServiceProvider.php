@@ -36,11 +36,19 @@ class AppServiceProvider extends ServiceProvider
         {
             $categories = Category::all();
             $view->with('categories', $categories);
+
         });
 
-        view()->composer('layouts.sidebar', function ($view){
+        view()->composer(['layouts.sidebar','layouts.footer'], function ($view){
            $view->with('popular_posts', Post::orderBy('views', 'desc')->limit(3)->get());
            $view->with('cats', Category::withCount('posts')->orderBy('posts_count','desc')->get());
+            $view->with('recent_posts', Post::orderBy('created_at', 'desc')->limit(3)->get());
         });
+
+//        view()->composer('posts.show',function ($view){
+////
+////            $post= Post::with('category')->all();
+////           $view->with('posts', $post->where($post-category->id, )->limit(3)->get());
+//        });
     }
 }

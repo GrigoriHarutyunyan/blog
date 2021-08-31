@@ -16,11 +16,15 @@ class Post extends Model
 
     protected $fillable = ['title','content', 'thumbnail','category_id', 'description'];
 
+
     public function tags(){
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+    public function comments(){
+       return $this->hasMany(Comment::class);
     }
 
     /**

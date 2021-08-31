@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Markedia - Marketing Blog Template::Home')
+@section('title', 'Home::Markedia - Marketing Blog Template')
 
 @section('header')
     <section id="cta" class="section">
@@ -12,10 +12,25 @@
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="newsletter-widget text-center align-self-center">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                        @endif
                         <h3>Subscribe Today!</h3>
                         <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-                        <form class="form-inline" method="post">
-                            <input type="text" name="email" placeholder="Add your email here.." required class="form-control" />
+                        <form class="form-inline" method="post" action="{{route('home')}}">
+                            @csrf
+                            <input type="email" name="email" placeholder="Add your email here.." required class="form-control" />
                             <input type="submit" value="Subscribe" class="btn btn-default btn-block" />
                         </form>
                     </div><!-- end newsletter -->
@@ -32,7 +47,7 @@
             @foreach($posts as $post)
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
-                        <a href="{{route('posts.single', ['slug'=>$post->slug])}}" title="">
+                        <a href="{{route('posts.single', ['slug'=>$post->slug, 'category_id'=>$post->category_id])}}" title="">
                             <img src="{{$post->getImage()}}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
@@ -69,14 +84,6 @@
         <div class="col-md-12">
             <nav aria-label="Page navigation">
                 {{$posts->links()}}
-{{--                <ul class="pagination justify-content-center">--}}
-{{--                    <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
-{{--                    <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
-{{--                    <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
-{{--                    <li class="page-item">--}}
-{{--                        <a class="page-link" href="#">Next</a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
             </nav>
         </div><!-- end col -->
     </div><!-- end row -->
