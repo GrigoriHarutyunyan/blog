@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,14 +13,15 @@ class SubNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $post;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
@@ -28,6 +31,7 @@ class SubNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+//        dd($this->post);
+        return $this->view('emails.subscribe');
     }
 }

@@ -8,6 +8,7 @@ use \App\Http\Controllers\CommentController;
 use \App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use \App\Http\Controllers\SubscriberControlle;
 
 
 
@@ -32,6 +33,7 @@ Route::post('/article/{slug}', [CommentController::class,'store'])->name('posts.
 Route::get('/category/{slug}',[\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.single');
 Route::get('/tag/{slug}',[\App\Http\Controllers\TagController::class, 'show'])->name('tags.single');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/sub', [\App\Http\Controllers\SubscribEmailController::class,'store']);
 
 //Admin
 Route::group(['prefix'=>'admin', 'middleware' =>'admin'], function(){
@@ -39,6 +41,7 @@ Route::group(['prefix'=>'admin', 'middleware' =>'admin'], function(){
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
+
 });
 
 Route::group(['middleware'=>'guest'],function (){
@@ -53,6 +56,8 @@ Route::group(['middleware'=>'guest'],function (){
 
 //Logout
 Route::get('/logout', [UserController::class,'logout'])->name('logout')->middleware('auth');
+
+
 
 
 

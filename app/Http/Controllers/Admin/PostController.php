@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SubNotification;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Subscribers;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -61,7 +64,16 @@ class PostController extends Controller
         $post = Post::create($data);
 
         $post->tags()->sync($request->tags);
-        return redirect()->route('posts.index')->with('success', 'Post added');
+
+        // $subscribers_email = Subscribers::find('email');
+        $subscribers_email = Subscribers::all();
+        $post = Post::latest()->first();
+        foreach ($subscribers_email as $email){
+             Mail::to($email->email)->send(new SubNotification($post));
+        }
+
+
+     return redirect()->route('posts.index')->with('success', 'Post added');
     }
 
 
@@ -106,6 +118,7 @@ class PostController extends Controller
         $post->update($data);
         $post->tags()->sync($request->tags);
 
+
         return redirect()->route('posts.index')->with('success', 'Post updated');
     }
 
@@ -124,4 +137,6 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post deleted');
     }
+
+//    public function
 }

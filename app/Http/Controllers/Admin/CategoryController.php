@@ -71,6 +71,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->update($request->all());
 //      $category->slag = null
+//        dd($category->update());
         return redirect()->route('categories.index')->with('success', 'Category edited');
 
     }
