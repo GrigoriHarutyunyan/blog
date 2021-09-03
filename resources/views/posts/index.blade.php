@@ -59,9 +59,8 @@
                     <div class="blog-meta big-meta text-center">
                         <div class="post-sharing">
                             <ul class="list-inline">
-                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox"></div>
                             </ul>
                         </div><!-- end post-sharing -->
                         <h4><a href="{{route('posts.single', ['slug'=>$post->slug])}}" title="">{{$post->title}}</a></h4>
@@ -87,4 +86,8 @@
             </nav>
         </div><!-- end col -->
     </div><!-- end row -->
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-613217ce48741564"></script>
 @endsection
+
+
