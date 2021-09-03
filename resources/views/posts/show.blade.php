@@ -70,10 +70,7 @@
 
             <div class="post-sharing">
                 <ul class="list-inline">
-                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" class="button btn btn-primary"><i class="bi bi-hand-thumbs-up"></i><a></a></li>
+                    <div class="addthis_inline_share_toolbox"></div>
                 </ul>
             </div><!-- end post-sharing -->
         </div><!-- end title -->
@@ -169,6 +166,7 @@
 {{--        {{dd($comment->)}}--}}
 {{--    @endforeach--}}
 
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-613217ce48741564"></script>
 
 
 @endsection
